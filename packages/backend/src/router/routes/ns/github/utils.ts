@@ -7,11 +7,11 @@ export const convertGitHubEvent = (event: any) => {
     ghType = 'star'
   }
 
-  if(event.type === 'CreateEvent' && event.payload.ref_type ==="tag") {
-    ghType = 'tag'
+  if(event.type === 'CreateEvent') {
+    ghType = event.payload.ref_type
   }
-
-  if(event.type === 'PushEvent' && event.payload.commits) {
+  
+  if(event.type === 'PushEvent') {
     ghType = 'push'
   }
 
